@@ -22,7 +22,7 @@ import static com.example.demo.constant.UrlMapping.MATCHES;
 public class MatchController {
     private final MatchService matchService;
 
-    @CrossOrigin(origins = "http://127.0.0.1:5500")
+    @CrossOrigin(origins = "*")
     @PostMapping("/register")
     public ResponseEntity<Notification<Match>> register(@RequestBody Match registerInfo){
         Match matchToRegister = Match.builder()
@@ -42,7 +42,7 @@ public class MatchController {
 
         return ResponseEntity.ok(match);
     }
-    @CrossOrigin(origins = "http://127.0.0.1:5500")
+    @CrossOrigin(origins = "*")
     @PostMapping("/participate")
     public ResponseEntity<Notification<Match>> participate(String playerName, String matchName){
 
@@ -55,7 +55,7 @@ public class MatchController {
         return ResponseEntity.ok(match);
     }
 
-    @CrossOrigin(origins = "http://127.0.0.1:5500")
+    @CrossOrigin(origins = "*")
     @PostMapping("/matchRequest")
     public ResponseEntity<Notification<MatchConfirm>> matchRequest(String playerName, String matchName){
         System.out.println(playerName);
@@ -68,7 +68,7 @@ public class MatchController {
         return ResponseEntity.ok(match);
     }
 
-    @CrossOrigin(origins = "http://127.0.0.1:5500")
+    @CrossOrigin(origins = "*")
     @GetMapping("/getRequests")
     public ResponseEntity<Notification<List<MatchConfirm>>> getRequests(){
 
@@ -80,7 +80,7 @@ public class MatchController {
         return ResponseEntity.ok(match);
     }
 
-    @CrossOrigin(origins = "http://127.0.0.1:5500")
+    @CrossOrigin(origins = "*")
     @GetMapping("/matchResponse")
     public ResponseEntity<Notification<Match>> matchResponse(Confirm confirm, String matchId, String player){
 
@@ -92,7 +92,7 @@ public class MatchController {
         return ResponseEntity.ok(match);
     }
 
-    @CrossOrigin(origins = "http://127.0.0.1:5500")
+    @CrossOrigin(origins = "*")
     @GetMapping("/getAll")
     public ResponseEntity<Notification<List<Match>>> getAll(){
 
@@ -104,7 +104,7 @@ public class MatchController {
 
         return ResponseEntity.ok(match);
     }
-    @CrossOrigin(origins = "http://127.0.0.1:5500")
+    @CrossOrigin(origins = "*")
     @GetMapping("/getMatch")
     public ResponseEntity<Notification<Match>> getMatch(String matchName){
 

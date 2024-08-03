@@ -99,7 +99,7 @@
         if(variableValue == null)window.location.href = 'login.html';
         function getInfo() {
             const username = document.getElementById('username').value;
-            fetch(`http://localhost:8080/homepage/admin/getInfo?username=${username}`)
+            fetch(`http://192.168.122.140:8080/homepage/admin/getInfo?username=${username}`)
             .then(response => {
                 if (!response.ok) {
                     return response.json().then(data => {
@@ -131,7 +131,7 @@
     }
 
     const username = usernameElement.value;
-    fetch(`http://localhost:8080/homepage/admin/getFiltered?name=${username}`)
+    fetch(`http://192.168.122.140:8080/homepage/admin/getFiltered?name=${username}`)
     .then(response => {
         if (!response.ok) {
             throw new Error('Failed to fetch filtered information');
@@ -171,7 +171,7 @@ function updateUser() {
                 role: userRole
             };
             console.log(formData);
-            fetch('http://localhost:8080/homepage/admin/updateUser', {
+            fetch('http://192.168.122.140:8080/homepage/admin/updateUser', {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -199,7 +199,7 @@ function updateUser() {
         }
 
 function getAllUsers() {
-            fetch('http://localhost:8080/homepage/admin/getAll')
+            fetch('http://192.168.122.140:8080/homepage/admin/getAll')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Failed to fetch users');
@@ -235,7 +235,7 @@ function getAllUsers() {
 
         function deleteUser() {
             const username = document.getElementById('username').value;
-            fetch(`http://localhost:8080/homepage/admin/deleteUser?deleteUserInfo=${username}`, {
+            fetch(`http://192.168.122.140:8080/homepage/admin/deleteUser?deleteUserInfo=${username}`, {
                 method: 'PUT'
             })
             .then(response => {
@@ -259,7 +259,7 @@ function getAllUsers() {
         }
 
         function getMatchRequests() {
-    fetch('http://localhost:8080/homepage/match/getRequests')
+    fetch('http://192.168.122.140:8080/homepage/match/getRequests')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Failed to fetch match requests');
@@ -317,7 +317,7 @@ function getAllUsers() {
 function confirmMatch(matchId, player, confirmation) {
     const transformedString = encodeURIComponent(matchId);
     getMatchRequests(); // Refresh the table after confirmation
-    fetch(`http://localhost:8080/homepage/match/matchResponse?matchId=${transformedString}&player=${player}&confirm=${confirmation}`, {
+    fetch(`http://192.168.122.140:8080/homepage/match/matchResponse?matchId=${transformedString}&player=${player}&confirm=${confirmation}`, {
         method: 'GET' // Assuming your backend accepts GET requests for confirmation
     })
         .then(response => {

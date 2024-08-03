@@ -24,7 +24,7 @@ import static com.example.demo.constant.UrlMapping.ADMINS;
 public class AdminController {
     private final UserService userService;
     private final AdminService adminService;
-    @CrossOrigin(origins = "http://127.0.0.1:5500")
+    @CrossOrigin(origins = "*")
     @GetMapping("/getInfo")
     public ResponseEntity<Notification<User>> getUser(String username){
 
@@ -36,7 +36,7 @@ public class AdminController {
 
         return ResponseEntity.ok(user);
     }
-    @CrossOrigin(origins = "http://127.0.0.1:5500")
+    @CrossOrigin(origins = "*")
     @GetMapping("/getAll")
     public ResponseEntity<Notification<List<UserDTO>>> getAll(){
 
@@ -48,7 +48,7 @@ public class AdminController {
 
         return ResponseEntity.ok(user);
     }
-    @CrossOrigin(origins = "http://127.0.0.1:5500")
+    @CrossOrigin(origins = "*")
     @GetMapping("/getFiltered")
     public ResponseEntity<Notification<List<Match>>> getFiltered(String name) throws IOException {
 
@@ -60,7 +60,7 @@ public class AdminController {
 
         return ResponseEntity.ok(match);
     }
-    @CrossOrigin(origins = "http://127.0.0.1:5500")
+    @CrossOrigin(origins = "*")
     @PutMapping("/updateUser")
     public ResponseEntity<Notification<User>> updateUser(@RequestBody User updateInfo){
 
@@ -72,7 +72,7 @@ public class AdminController {
 
         return ResponseEntity.ok(user);
     }
-    @CrossOrigin(origins = "http://127.0.0.1:5500")
+    @CrossOrigin(origins = "*")
     @PutMapping("/deleteUser")
     public ResponseEntity<Notification<User>> deleteUser(String deleteUserInfo){
 

@@ -94,7 +94,7 @@
         console.log(variableValue);
         if(variableValue == null)window.location.href = 'login.html';
         function getMatches() {
-            fetch('http://localhost:8080/homepage/match/getAll')
+            fetch('http://192.168.122.140:8080/homepage/match/getAll')
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Failed to fetch matches');
@@ -138,7 +138,7 @@
             const selectedMatchName = selectElement.options[selectElement.selectedIndex].value;
             const transformedString = encodeURIComponent(selectedMatchName);
 
-            const apiUrl = `http://localhost:8080/homepage/match/getMatch?matchName=${transformedString}`;
+            const apiUrl = `http://192.168.122.140:8080/homepage/match/getMatch?matchName=${transformedString}`;
 
             fetch(apiUrl)
                 .then(response => {
@@ -175,7 +175,7 @@
             const selectedMatchName = selectElement.options[selectElement.selectedIndex].value;
             const transformedString = encodeURIComponent(selectedMatchName);
 
-            const apiUrl = `http://localhost:8080/homepage/match/matchRequest?playerName=${currentUserName}&matchName=${transformedString}`;
+            const apiUrl = `http://192.168.122.140:8080/homepage/match/matchRequest?playerName=${currentUserName}&matchName=${transformedString}`;
 
             console.log(currentUserName);
             console.log(transformedString);

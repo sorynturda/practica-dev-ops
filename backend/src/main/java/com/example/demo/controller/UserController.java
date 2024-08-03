@@ -22,8 +22,8 @@ import static com.example.demo.constant.UrlMapping.USERS;
 @RequestMapping(USERS)
 public class UserController {
     private final UserService userService;
-    //@CrossOrigin(origins = "http://localhost:40404")
-    @CrossOrigin(origins = "http://127.0.0.1:5500")
+    // @CrossOrigin(origins = "http://localhost:40404")
+    @CrossOrigin(origins = "*")
     @GetMapping("/login")
     public ResponseEntity<Notification<UserDTO>> login(String username, String password){
         System.out.println(username);
@@ -36,7 +36,7 @@ public class UserController {
 
         return ResponseEntity.ok(user);
     }
-    @CrossOrigin(origins = "http://127.0.0.1:5500")
+    @CrossOrigin(origins = "*")
     @GetMapping("/getSchedule")
     public ResponseEntity<Notification<List<Match>>> getSchedule(String refereeName){
         Notification<List<Match>> match = userService.getSchedule(refereeName);
@@ -48,7 +48,7 @@ public class UserController {
         return ResponseEntity.ok(match);
     }
 
-    @CrossOrigin(origins = "http://127.0.0.1:5500")
+    @CrossOrigin(origins = "*")
     @GetMapping("/getFiltered")
     public ResponseEntity<Notification<List<Match>>> getFiltered(String name) throws IOException {
 
@@ -61,7 +61,7 @@ public class UserController {
         return ResponseEntity.ok(match);
     }
 
-    @CrossOrigin(origins = "http://127.0.0.1:5500")
+    @CrossOrigin(origins = "*")
     @PutMapping("/setScore")
     public ResponseEntity<Notification<Match>> setScore(String matchName,String score){
         Notification<Match> match = userService.setScore(matchName,score);
@@ -74,7 +74,7 @@ public class UserController {
     }
 
 
-    @CrossOrigin(origins = "http://127.0.0.1:5500")
+    @CrossOrigin(origins = "*")
     @PostMapping("/register")
     public ResponseEntity<Notification<User>> register(@RequestBody User registerInfo){
             User userToBeRegistered = User.builder()
