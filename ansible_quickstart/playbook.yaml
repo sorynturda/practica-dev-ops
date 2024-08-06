@@ -15,3 +15,21 @@
       become: true
       become_user: postgres
       ansible.builtin.shell: psql -c "ALTER USER postgres PASSWORD 'postgres';"
+
+- name: Cloning and starting the app
+  hosts: 192.168.56.222
+  gather_facts: true
+  tasks:
+    - name: update apt
+      become: true
+      apt:
+        update_cache: yes
+    - name: clone repo
+      git:
+        repo: 'https://github.com/sorynturda/practica-dev-ops.git'
+        dest: /home/vagrant/app
+    - name: install jdk
+      become: true
+      apt: 
+        name: openjdk-17-jdk
+        state: latest
