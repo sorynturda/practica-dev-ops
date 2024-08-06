@@ -31,5 +31,11 @@
     - name: install jdk
       become: true
       apt: 
-        name: openjdk-17-jdk
+        deb: https://builds.openlogic.com/downloadJDK/openlogic-openjdk/21.0.4+7/openlogic-openjdk-21.0.4+7-linux-x64-deb.deb
+    - name: install gradle
+      become: true
+      apt:
+        name: gradle
         state: latest
+    - name: Change perm of gradlew
+      file: dest=/home/vagrant/app/app/backend/gradlew mode=a+x
