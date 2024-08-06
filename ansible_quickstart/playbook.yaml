@@ -1,9 +1,17 @@
-- name: My first play
-  hosts: myhosts
+- name: Installing postgres on DB machine
+  hosts: 192.168.56.111
+  gather_facts: true
   tasks:
-   - name: Ping my hosts
-     ansible.builtin.ping:
-
-   - name: Print message
-     ansible.builtin.debug:
-      msg: Hello world
+    - name: update apt
+      become: true
+      apt:
+        update_cache: yes
+    - name: get postgress
+      become: true
+      apt: 
+        name: postgresql
+        state: latest
+    - name: change postgres pass
+      become: true
+      become_user: postgres
+      ansible.builtin.shell: psql -c "ALTER USER postgres PASSWORD 'postgres';"
