@@ -15,8 +15,7 @@ java {
 	sourceCompatibility = '21'
 }
 
-apply plugin: ‘application’
-mainClassName = 'com.dexample.demo.DemoApplication'
+
 repositories {
 	mavenCentral()
 }
