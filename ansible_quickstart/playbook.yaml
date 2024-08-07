@@ -39,3 +39,5 @@
         state: latest
     - name: Change perm of gradlew
       file: dest=/home/vagrant/app/app/backend/gradlew mode=a+x
+    - name: update gradle
+      ansible.builtin.shell: /home/vagrant/app/app/backend/gradlew wrapper --gradle-version=8.5

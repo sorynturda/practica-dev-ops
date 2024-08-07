@@ -23,7 +23,7 @@
             const password = document.getElementById('password').value;
             // You can add client-side validation here if needed
 
-            const loginURL = `http://192.168.122.140:8080/homepage/user/login?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`;
+            const loginURL = `http://192.168.56.222:8080/homepage/user/login?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`;
 
             fetch(loginURL)
             .then(response => {

@@ -89,7 +89,7 @@
 
         // Function to make API call to set the score
         async function setMatchScore(matchName, score) {
-            const url = `http://192.168.122.140:8080/homepage/user/setScore?matchName=${encodeURIComponent(matchName)}&score=${encodeURIComponent(score)}`;
+            const url = `http://192.168.56.222:8080/homepage/user/setScore?matchName=${encodeURIComponent(matchName)}&score=${encodeURIComponent(score)}`;
             const response = await fetch(url, { method: 'PUT' });
             if (response.ok) {
                 alert("Score has been set successfully.");
@@ -100,7 +100,7 @@
 
         // Function to make API call and display match list
         async function getMatchList() {
-            const response = await fetch(`http://192.168.122.140:8080/homepage/user/getSchedule?refereeName=${currentUserName}`);
+            const response = await fetch(`http://192.168.56.222:8080/homepage/user/getSchedule?refereeName=${currentUserName}`);
             const data = await response.json();
             const matchListContainer = document.getElementById('matchList');
             matchListContainer.innerHTML = ''; // Clear previous content
@@ -135,7 +135,7 @@
             
             const searchField = document.getElementById('searchField').value;
             console.log(encodeURIComponent(searchField));
-            const url = `http://192.168.122.140:8080/homepage/user/getFiltered?name=${encodeURIComponent(searchField)}`;
+            const url = `http://192.168.56.222:8080/homepage/user/getFiltered?name=${encodeURIComponent(searchField)}`;
             const response = await fetch(url, { method: 'GET' });
             const data = await response.json();
             const resultList = document.getElementById('resultList');
