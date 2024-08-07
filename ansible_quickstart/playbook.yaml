@@ -15,6 +15,17 @@
       become: true
       become_user: postgres
       ansible.builtin.shell: psql -c "ALTER USER postgres PASSWORD 'postgres';"
+    - name: modify pg_hba.conf
+      become: true
+      ansible.builtin.shell: bash -c "echo 'host    all             all             0.0.0.0/0               md5' >> /etc/postgresql/10/main/pg_hba.conf"
+    - name: listen to all ports
+      become: true
+      ansible.builtin.shell: bash -c "echo 'listen_addresses='\''*'\''' >> /etc/postgresql/10/main/postgresql.conf"
+    - name: restart postgresql service
+      become: true
+      ansible.builtin.shell: systemctl restart postgresql
+
+
 
 - name: Cloning and starting the app
   hosts: 192.168.56.222
@@ -39,5 +50,5 @@
         state: latest
     - name: Change perm of gradlew
       file: dest=/home/vagrant/app/app/backend/gradlew mode=a+x
-    - name: update gradle
-      ansible.builtin.shell: /home/vagrant/app/app/backend/gradlew wrapper --gradle-version=8.5
+    # - name: update gradle
+    #   ansible.builtin.shell: /home/vagrant/app/app/backend/gradlew wrapper --gradle-version=8.5
