@@ -52,3 +52,7 @@
       file: dest=/home/vagrant/app/app/backend/gradlew mode=a+x
     # - name: update gradle
     #   ansible.builtin.shell: /home/vagrant/app/app/backend/gradlew wrapper --gradle-version=8.5
+    - name: create jar file
+      ansible.builtin.shell: bash -c "cd /home/vagrant/app/app/backend && ./gradlew clean build -x test"
+    - name: start the application
+      ansible.builtin.shell: bash -c "cd /home/vagrant/app/app/backend/build/libs && APP=$(ls | tail -n 1) && java -jar $APP"
