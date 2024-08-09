@@ -2,10 +2,12 @@
   hosts: 192.168.56.111
   tasks:
     - name: Include db task list in play
+      become: yes
       import_tasks: db.yml
 
 - name: Cloning and starting the app
   hosts: 192.168.56.222
   tasks:
     - name: Include app task list in play
+      become: yes
       import_tasks: app.yml
