@@ -1,0 +1,11 @@
+- name: Installing postgres on DB machine
+  hosts: 192.168.56.111
+  tasks:
+    - name: Include db task list in play
+      import_tasks: db.yml
+
+- name: Cloning and starting the app
+  hosts: 192.168.56.222
+  tasks:
+    - name: Include app task list in play
+      import_tasks: app.yml

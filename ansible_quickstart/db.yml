@@ -1,0 +1,22 @@
+- name: update apt
+  become: true
+  apt:
+    update_cache: yes
+- name: get postgress
+  become: true
+  apt: 
+    name: postgresql
+    state: latest
+- name: change postgres pass
+  become: true
+  become_user: postgres
+  ansible.builtin.shell: psql -c "ALTER USER postgres PASSWORD 'postgres';"
+- name: modify pg_hba.conf
+  become: true
+  ansible.builtin.shell: bash -c "echo 'host    all             all             0.0.0.0/0               md5' >> /etc/postgresql/10/main/pg_hba.conf"
+- name: listen to all ports
+  become: true
+  ansible.builtin.shell: bash -c "echo 'listen_addresses='\''*'\''' >> /etc/postgresql/10/main/postgresql.conf"
+- name: restart postgresql service
+  become: true
+  ansible.builtin.shell: systemctl restart postgresql
