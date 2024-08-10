@@ -28,4 +28,4 @@
       ansible.builtin.shell: 
         cd /home/vagrant/unnamed-app/backend/build/libs && 
         APP=$(ls | tail -n 1) &&
-        java -jar $APP
+        java -jar $APP &
