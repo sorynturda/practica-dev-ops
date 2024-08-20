@@ -1,0 +1,10 @@
+- name: running the app
+  hosts: application
+  tasks:
+    - name: run jar file
+      ansible.builtin.shell: 
+        APP=$(ls | tail -n 1) &&
+        java -jar $APP
+      args:
+        chdir: /home/vagrant/unnamed-app/backend/build/libs
+        

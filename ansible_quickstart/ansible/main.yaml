@@ -5,9 +5,16 @@
       become: yes
       import_tasks: db.yml
 
-- name: Cloning and starting the app
+- name: Cloning the app and configuring the VM
   hosts: application
   tasks:
     - name: Include app task list in play
       become: yes
       import_tasks: app.yml
+
+- name: running the app
+  hosts: application
+  tasks: 
+    - name: Include start task list in play
+      become: yes
+      import_tasks: start.yml
