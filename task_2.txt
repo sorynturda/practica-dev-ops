@@ -1,9 +1,0 @@
-steps for the next part of the setup:
-
-1. Create a Vagrantfile that will replicate the VM setup you currently have created manually
-2. Create 2 Ansible playbooks that will provision each VM - one for the application and one of the DB. Here I'd recommend you use 2 roles and just call those roles from a main.yml or something similar. Keep it as simple as possible 
-3. Call the Ansible main.yml from a bootstrap step in the Vagrantfile after the VMs are created and up and running
-
-the final setup should ideally be you just run "vagrant up" and after the VMs are created and provisioned you can just see the application in the browser
-
-also... i'd be a good idea to put all of this in Git so we can make changes in the future doing PRs so we can work in a scenario that's close to real life
